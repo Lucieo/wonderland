@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/react'
-import { IChapter } from 'data/alice'
+import { IChapter } from 'data/types'
 import React, { useState } from 'react'
 import BookNavigation from './BookNavigation'
 import Page from './Page'
@@ -11,6 +11,7 @@ interface IChapterWrapper extends IChapter {
 
 const Chapter = ({
   title,
+  slug,
   subtitle,
   pages,
   nextChapter,
@@ -37,6 +38,7 @@ const Chapter = ({
         setCurrentPage={setCurrentPage}
         nextChapter={nextChapter}
         prevChapter={prevChapter}
+        slug={slug}
       />
     </Box>
   )

@@ -13,7 +13,7 @@ const Preview = () => {
   return (
     <Center minH="100vh" flexDirection="column" paddingY={4}>
       <Head>
-        <title>Alice Framer Motion App</title>
+        <title>Wonderland</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Text paddingTop={6} fontSize="2xl">

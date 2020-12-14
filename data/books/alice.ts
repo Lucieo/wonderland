@@ -6,43 +6,13 @@ import {
   KeyOnDoor,
 } from 'animations/alice'
 import AliceFalling from 'animations/alice/AliceFalling'
+import { Book, PageTypes, Position } from 'data/types'
 
-enum Position {
-  TOP = 'top',
-  BOTTOM = 'bottom',
-}
-
-enum PageTypes {
-  TEXT = 'text',
-  QUOTE = 'quote',
-}
-export interface IChapter {
-  romanIndex: string
-  title: string
-  subtitle: string
-  pages: IPage[]
-  illustration: string
-}
-
-export interface IPage {
-  type: PageTypes
-  paragraphs: string[]
-  animation?: {
-    position: Position
-    component: () => JSX.Element
-  }
-}
-
-export interface Book {
-  title: string
-  chapters: IChapter[]
-}
-
-export const book: Book = {
+export const ALICE: Book = {
+  slug: 'alice',
   title: 'Alice au Pays des Merveilles',
   chapters: [
     {
-      romanIndex: 'I',
       illustration: 'chapter1.png',
       title: 'Chapitre Premier',
       subtitle: 'Au fond du terrier',
@@ -131,7 +101,6 @@ export const book: Book = {
       ],
     },
     {
-      romanIndex: 'II',
       illustration: 'chapter2.png',
       title: 'Chapitre 2',
       subtitle: 'La mare aux larmes',

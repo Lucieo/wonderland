@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Text } from '@chakra-ui/react'
-import { IPage } from 'data/alice'
+import { IPage } from 'data/types'
 
 const Page = ({ animation, paragraphs, type }: IPage) => {
   const AnimationComponent = animation?.component

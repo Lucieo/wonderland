@@ -1,9 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
-import { Center, Text, Flex, Box } from '@chakra-ui/react'
-import { books } from 'data/books'
+import { Center, Text, Flex, Square, Box } from '@chakra-ui/react'
+import Link from 'next/link'
+import { ALICE as book } from 'data/books/alice'
+import { romanIndex } from 'data/usefullData'
 
-export default function Home() {
+export default function AliceHome() {
   return (
     <Center height="100vh" flexDirection="column">
       <Head>
@@ -12,14 +14,17 @@ export default function Home() {
       </Head>
 
       <Box textAlign="center" fontSize="3xl" p={4}>
-        <Text>La grand bibliothèque</Text>
+        <Text fontFamily="Dancing Script" fontSize="45px">
+          {book.title}
+        </Text>
+        <Text>de Framer Motion</Text>
       </Box>
       <Flex
         paddingY={10}
         flexDirection={{ base: 'column', lg: 'row', xl: 'row' }}
         alignItems="center"
       >
-        {/* {book.chapters.map((chapter, index) => (
+        {book.chapters.map((chapter, index) => (
           <Box p={4} key={index}>
             <Link href={`/chapter/${index + 1}`}>
               <Square
@@ -33,12 +38,12 @@ export default function Home() {
                 cursor="pointer"
               >
                 <Text fontSize="50px" fontWeight="bold" color="#D4AF37">
-                  {chapter.romanIndex}
+                  {romanIndex[index]}
                 </Text>
               </Square>
             </Link>
           </Box>
-        ))} */}
+        ))}
       </Flex>
     </Center>
   )

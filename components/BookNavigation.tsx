@@ -8,6 +8,7 @@ interface IBookNavigation {
   setCurrentPage: (pageIndex: number) => void
   nextChapter: number
   prevChapter?: number
+  slug: string
 }
 
 const BookNavigation = ({
@@ -16,6 +17,7 @@ const BookNavigation = ({
   totalPages,
   nextChapter,
   prevChapter,
+  slug,
 }: IBookNavigation) => {
   return (
     <Flex
@@ -37,7 +39,7 @@ const BookNavigation = ({
             Précedent
           </Button>
         ) : prevChapter > 0 ? (
-          <Link href={`/chapter/${prevChapter}`}>
+          <Link href={`/${slug}/${prevChapter}`}>
             <Button colorScheme="blue">Chapitre Précédent</Button>
           </Link>
         ) : (
@@ -55,7 +57,7 @@ const BookNavigation = ({
             Suivant
           </Button>
         ) : nextChapter ? (
-          <Link href={`/chapter/${nextChapter}`}>
+          <Link href={`/${slug}/${nextChapter}`}>
             <Button colorScheme="blue">Prochain Chapitre</Button>
           </Link>
         ) : (

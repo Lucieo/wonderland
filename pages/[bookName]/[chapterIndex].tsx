@@ -1,22 +1,24 @@
 import React from 'react'
 import Chapter from 'components/Chapter'
-import { book } from 'data/alice'
+import { books } from 'data/books'
 import { GetStaticPaths } from 'next'
 import { Container } from '@chakra-ui/react'
 import Head from 'next/head'
 
-const BookChapter = ({ chapterIndex }) => {
-  const chapter = book.chapters[chapterIndex - 1]
-  const nextChapter = Boolean(book.chapters[chapterIndex]) && +chapterIndex + 1
+const BookChapter = ({ chapterIndex, bookContent }) => {
+  const chapter = bookContent.chapters[chapterIndex - 1]
+  const nextChapter =
+    Boolean(bookContent.chapters[chapterIndex]) && +chapterIndex + 1
   const prevChapter = chapterIndex - 1
   return (
     <Container maxW="3xl" textAlign="center">
       <Head>
-        <title>Alice Framer Motion App</title>
+        <title>Wonderland</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Chapter
         key={chapterIndex}
+        slug={bookContent.slug}
         {...chapter}
         nextChapter={nextChapter}
         prevChapter={prevChapter}
@@ -28,13 +30,18 @@ const BookChapter = ({ chapterIndex }) => {
 export default BookChapter
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = book.chapters.map((_, index) => `/chapter/${index + 1}`)
+  const paths = books
+    .map(({ chapters, slug }) =>
+      chapters.map((_, index) => `/${slug}/${index + 1}`),
+    )
+    .flat()
   return { paths, fallback: false }
 }
 
 export async function getStaticProps(context) {
-  const { chapterIndex } = context.params
+  const { chapterIndex, bookName } = context.params
+  const bookContent = books.find((book) => book.slug === bookName)
   return {
-    props: { chapterIndex },
+    props: { chapterIndex, bookContent },
   }
 }
