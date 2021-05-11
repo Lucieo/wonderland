@@ -6,8 +6,8 @@ export enum Position {
   BOTTOM = 'bottom',
 }
 
-export enum PageTypes {
-  TEXT = 'text',
+export enum ParagraphTypes {
+  CENSORED = 'censored',
   QUOTE = 'quote',
 }
 export interface IChapter {
@@ -18,16 +18,26 @@ export interface IChapter {
 }
 
 export interface IPage {
-  type: PageTypes
-  paragraphs: string[]
+  paragraphs: Iparagraph[]
   animation?: {
     position: Position
     component: () => JSX.Element
   }
 }
 
+export interface Iparagraph {
+  content: string
+  type?: ParagraphTypes
+}
+
+
 export interface Book {
   title: string
+  color: string
+  mainImage: string
+  abstract: string
   slug: string
+  author: string
   chapters: IChapter[]
+  homeAnimation?: () => JSX.Element
 }

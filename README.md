@@ -1,15 +1,15 @@
-## Alice in Framer Motion Land :rabbit::girl::tophat:
+## Alice in Framer Motion Land :rabbit::sandal::princess:
 
-https://alice-framer-motion.vercel.app/
+https://wonderland-nine.vercel.app/
 
-Un projet de livre animé sur le thème de Alice aux pays des merveilles pour tester les animations avec la librairie Framer Motion avec
+A fairy tale reading app animated with framer motion
 
 - [Framer Motion](https://www.framer.com/motion/)
 - [Next.js](https://nextjs.org/)
 - [Chakra UI](https://nextjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 
-En local :
+Start local :
 
 ```bash
 yarn install

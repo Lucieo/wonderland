@@ -1,7 +1,6 @@
-import '../styles/globals.css'
 import { ChakraProvider } from '@chakra-ui/react'
 
-function AliceFramerMotionApp({ Component, pageProps }) {
+function WonderlandMotionApp({ Component, pageProps }) {
   return (
     <ChakraProvider>
       <Component {...pageProps} />
@@ -9,4 +8,4 @@ function AliceFramerMotionApp({ Component, pageProps }) {
   )
 }
 
-export default AliceFramerMotionApp
+export default WonderlandMotionApp

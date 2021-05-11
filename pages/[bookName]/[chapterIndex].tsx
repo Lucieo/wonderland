@@ -5,10 +5,10 @@ import { GetStaticPaths } from 'next'
 import { Container } from '@chakra-ui/react'
 import Head from 'next/head'
 
-const BookChapter = ({ chapterIndex, bookContent }) => {
-  const chapter = bookContent.chapters[chapterIndex - 1]
-  const nextChapter =
-    Boolean(bookContent.chapters[chapterIndex]) && +chapterIndex + 1
+const BookChapter = ({ bookName, chapterIndex }) => {
+  const book = books.find((book) => book.slug === bookName)
+  const chapter = book.chapters[chapterIndex - 1]
+  const nextChapter = Boolean(book.chapters[chapterIndex]) && +chapterIndex + 1
   const prevChapter = chapterIndex - 1
   return (
     <Container maxW="3xl" textAlign="center">
@@ -18,10 +18,11 @@ const BookChapter = ({ chapterIndex, bookContent }) => {
       </Head>
       <Chapter
         key={chapterIndex}
-        slug={bookContent.slug}
+        slug={book.slug}
         {...chapter}
         nextChapter={nextChapter}
         prevChapter={prevChapter}
+        color={book.color}
       />
     </Container>
   )
@@ -40,8 +41,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export async function getStaticProps(context) {
   const { chapterIndex, bookName } = context.params
-  const bookContent = books.find((book) => book.slug === bookName)
   return {
-    props: { chapterIndex, bookContent },
+    props: { chapterIndex, bookName },
   }
 }
